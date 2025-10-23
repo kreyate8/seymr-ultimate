@@ -1,0 +1,656 @@
+/* 
+═══════════════════════════════════════════════════════════════
+   SEYMR® - STYLES PERFECTIONNÉS ET SUBLIMÉS
+   Version 3.0 - Effets Avancés & Esthétique Premium
+═══════════════════════════════════════════════════════════════
+*/
+
+/* 🎨 VARIABLES ENRICHIES */
+:root {
+    --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+    --gradient-radial-gold: radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, transparent 70%);
+    --shadow-glow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(212,175,55,0.1);
+    --shadow-deep: 0 20px 60px rgba(0,0,0,0.5), 0 0 100px rgba(212,175,55,0.05);
+    --blur-glass: blur(30px) saturate(180%);
+    --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 🌟 EFFET DE GRAIN SUBTIL SUR LE FOND */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+/* ✨ NAVIGATION GLASSMORPHISM */
+nav {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+nav.scrolled {
+    background: rgba(0, 0, 0, 0.85) !important;
+    border-bottom-color: rgba(212, 175, 55, 0.3);
+}
+
+.nav-logo {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 400 !important;
+    position: relative;
+}
+
+.nav-logo::after {
+    content: 'SEYMR®';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(8px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500 !important;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+}
+
+.nav-link:hover::before {
+    width: 150%;
+    height: 300%;
+}
+
+/* 🎭 HERO SECTION SUBLIMÉE */
+#hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center top, rgba(212,175,55,0.08) 0%, transparent 50%, rgba(0,0,0,0.8) 100%);
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(212,175,55,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212,175,55,0.03) 0%, transparent 40%);
+    animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 12vw, 8rem) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.3em !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2rem !important;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: heroTitleReveal 2s var(--transition-smooth) forwards !important;
+    position: relative;
+}
+
+.hero-title::after {
+    content: attr(data-key);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(20px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+@keyframes heroTitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+        letter-spacing: 0.5em;
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: 0.3em;
+        filter: blur(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.3rem) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.4em !important;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8) !important;
+    margin-bottom: 3rem !important;
+    animation: fadeInUp 1.2s ease 0.5s backwards !important;
+    line-height: 1.8 !important;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.2s ease 0.8s backwards !important;
+}
+
+.hero-cta {
+    padding: 1.2rem 3rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.25em !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgba(212,175,55,0.5) !important;
+    color: var(--or-souverain) !important;
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--transition-smooth) !important;
+    backdrop-filter: blur(10px);
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.hero-cta:hover {
+    color: #000 !important;
+    border-color: var(--or-souverain) !important;
+    box-shadow: var(--shadow-glow) !important;
+    transform: translateY(-2px) !important;
+}
+
+.hero-cta:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.hero-cta-primary {
+    background: var(--gradient-gold) !important;
+    color: #000 !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 25px rgba(212,175,55,0.3) !important;
+}
+
+.hero-cta-primary::before {
+    background: rgba(0,0,0,0.1) !important;
+}
+
+.hero-cta-primary:hover {
+    color: #000 !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--shadow-glow) !important;
+}
+
+/* 📜 INDICATEUR DE SCROLL */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeInUp 1.5s ease 1.2s backwards, float 3s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hero-scroll-indicator span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.8);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--or-souverain), transparent);
+    position: relative;
+}
+
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--or-souverain);
+    border-radius: 50%;
+    animation: scrollDot 2s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--or-souverain);
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
+}
+
+@keyframes scrollDot {
+    0% { top: 0; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* 🎨 TITRES DE SECTIONS PERFECTIONNÉS */
+.section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.3em !important;
+    text-align: center !important;
+    margin-bottom: 1.5rem !important;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block !important;
+    width: 100% !important;
+}
+
+.separator-dore {
+    width: 120px !important;
+    height: 2px !important;
+    background: var(--gradient-gold) !important;
+    margin: 0 auto 4rem !important;
+    border: none !important;
+    position: relative;
+    box-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+
+.separator-dore::before,
+.separator-dore::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--or-souverain);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px var(--or-souverain);
+}
+
+.separator-dore::before { left: -15px; }
+.separator-dore::after { right: -15px; }
+
+/* 💎 CARDS AVEC EFFETS AVANCÉS */
+.philosophy-card,
+.manifestation-card,
+.article-card {
+    background: rgba(255,255,255,0.02) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212,175,55,0.2) !important;
+    padding: 2.5rem !important;
+    transition: all 0.5s var(--transition-smooth) !important;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.philosophy-card::before,
+.manifestation-card::before,
+.article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--transition-smooth);
+}
+
+.philosophy-card:hover,
+.manifestation-card:hover,
+.article-card:hover {
+    transform: translateY(-10px) !important;
+    border-color: rgba(212,175,55,0.6) !important;
+    background: rgba(255,255,255,0.04) !important;
+    box-shadow: var(--shadow-deep) !important;
+}
+
+.philosophy-card:hover::before,
+.manifestation-card:hover::before,
+.article-card:hover::before {
+    transform: scaleX(1);
+}
+
+.philosophy-card-title,
+.manifestation-name,
+.article-title {
+    font-family: var(--font-primary) !important;
+    font-size: 1.5rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.1em !important;
+    color: var(--or-souverain) !important;
+    margin-bottom: 1.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.philosophy-card:hover .philosophy-card-title,
+.manifestation-card:hover .manifestation-name,
+.article-card:hover .article-title {
+    color: #F4D03F !important;
+    transform: translateX(5px);
+}
+
+/* 🖼️ IMAGES AVEC EFFET REVEAL */
+.manifestation-image-container,
+.article-image-container {
+    position: relative;
+    overflow: hidden;
+    margin: -2.5rem -2.5rem 1.5rem -2.5rem;
+    aspect-ratio: 16/10;
+}
+
+.manifestation-image,
+.article-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--transition-smooth);
+    filter: grayscale(20%);
+}
+
+.manifestation-card:hover .manifestation-image,
+.article-card:hover .article-image {
+    transform: scale(1.08);
+    filter: grayscale(0%);
+}
+
+.manifestation-image-container::after,
+.article-image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+.manifestation-card:hover .manifestation-image-container::after,
+.article-card:hover .article-image-container::after {
+    opacity: 0.3;
+}
+
+/* 📖 SECTION LIVRE AMÉLIORÉE */
+#livre {
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.05) 0%, transparent 70%) !important;
+}
+
+.book-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5rem !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+}
+
+.book-image {
+    position: relative;
+}
+
+.book-image img {
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-deep) !important;
+    transition: transform 0.6s ease !important;
+}
+
+.book-image:hover img {
+    transform: translateY(-10px) rotateY(-5deg) !important;
+}
+
+.book-subtitle {
+    font-family: var(--font-primary) !important;
+    font-size: 2rem !important;
+    font-style: italic !important;
+    color: rgba(255,255,255,0.8) !important;
+    margin-bottom: 2rem !important;
+}
+
+/* 📧 FORMULAIRE SUBLIMÉ */
+.contact-form {
+    max-width: 700px !important;
+    margin: 0 auto !important;
+}
+
+.form-group {
+    margin-bottom: 2rem !important;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase;
+    color: var(--or-souverain) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.5rem !important;
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(212,175,55,0.3) !important;
+    color: var(--text-main) !important;
+    font-family: var(--font-secondary) !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--or-souverain) !important;
+    background: rgba(255,255,255,0.05) !important;
+    box-shadow: 0 0 20px rgba(212,175,55,0.2) !important;
+}
+
+/* 🎯 ANIMATIONS PERFECTIONNÉES */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--transition-smooth),
+                transform 0.8s var(--transition-smooth);
+}
+
+[data-animate].is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+[data-animate][data-delay="0.2"] {
+    transition-delay: 0.2s;
+}
+
+[data-animate][data-delay="0.4"] {
+    transition-delay: 0.4s;
+}
+
+/* 🌟 LOADING SEQUENCE PERFECTIONNÉE */
+.loading-logo {
+    font-size: clamp(3rem, 10vw, 6rem) !important;
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: logoReveal 2s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
+}
+
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        letter-spacing: 1em;
+        filter: blur(20px);
+    }
+    50% {
+        opacity: 1;
+        letter-spacing: 0.5em;
+    }
+    100% {
+        opacity: 1;
+        letter-spacing: 0.3em;
+        filter: blur(0);
+    }
+}
+
+/* 📱 RESPONSIVE AMÉLIORÉ */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4rem) !important;
+        letter-spacing: 0.2em !important;
+    }
+    
+    .book-layout {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+    
+    .philosophy-grid,
+    .manifestations-grid,
+    .archives-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .hero-cta {
+        padding: 1rem 2rem !important;
+    }
+}
+
+/* ✨ EFFETS SUBTILS SUR LES SECTIONS */
+section {
+    position: relative;
+    padding: 8rem 2rem !important;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--or-souverain), transparent);
+    opacity: 0.3;
+}
+
+/* 🎨 AMÉLIORATION DES TAGLINES */
+.manifestation-tagline,
+.article-excerpt {
+    font-size: 0.95rem !important;
+    line-height: 1.8 !important;
+    color: rgba(255,255,255,0.7) !important;
+    transition: color 0.3s ease !important;
+}
+
+.manifestation-card:hover .manifestation-tagline,
+.article-card:hover .article-excerpt {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* 💫 EFFET BOUTON "LIRE LA SUITE" */
+.article-readmore {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--or-souverain);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-readmore {
+    transform: translateX(5px);
+}
+
+.article-readmore::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: margin-left 0.3s ease;
+}
+
+.article-card:hover .article-readmore::after {
+    margin-left: 1rem;
+}
